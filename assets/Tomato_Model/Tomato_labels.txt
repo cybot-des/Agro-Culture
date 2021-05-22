@@ -1,0 +1,8 @@
+0 Bacterial Spot
+1 Early Blight
+2 Healthy
+3 Late Blight
+4 Mosaic Virus
+5 Septoria Leaf Spot
+6 Two Spotted Spider...
+7 Yellow Leaf Curl V...

@@ -1,0 +1,158 @@
+name: farmsecure
+description: A new Flutter application.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  splashscreen: ^1.3.5
+  animated_splash_screen: ^1.0.1+2
+  double_back_to_close_app: ^1.2.0
+  flutter_email_sender: ^4.0.0
+  flutter_sms: ^2.1.1
+  url_launcher: ^5.7.10
+  image_picker: ^0.6.7+17
+  flutter_rating_bar: ^3.2.0
+  another_flushbar: ^1.10.11
+  weather: ^1.2.4
+  geolocator: ^5.3.1
+  location: ^3.0.2
+  intl: ^0.16.1
+  http: ^0.12.1
+  google_maps_flutter: any
+  google_place: any
+  youtube_player_flutter: ^7.0.0+7
+  youtube_api: ^0.8.0
+  cached_network_image: any
+  provider:
+  flutter_offline:
+  tflite: any
+
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.0
+  flutter_icons:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/virus.png
+    - assets/antivirus_2.png
+    - assets/Agro_logo.png
+    - assets/Agro_img_2.jpg
+    - assets/scan.svg
+    - assets/potato_leaf.png
+    - assets/corn.png
+    - assets/pest.png
+    - assets/pest_2.png
+    - assets/growth.png
+    - assets/cotton.png
+    - assets/sun.png
+    - assets/Weather/clear.jpg
+    - assets/Weather/heavyrain.jpg
+    - assets/Weather/lightrain.jpg
+    - assets/Weather/heavycloud.jpg
+    - assets/Weather/lightcloud.jpg
+    - assets/Weather/snow.jpg
+    - assets/Weather/thunderstorm.jpg
+    - assets/Weather/showers.jpg
+    - assets/speech.png
+    - assets/location.png
+    - assets/Tomato_Model/tomato.png
+    - assets/Apple_Model/apple.png
+    - assets/Grape_Model/grapes.png
+    - assets/Potato_Model/early_Blight.jpg
+    - assets/Potato_Model/late_Blight.jpg
+    - assets/Corn_Model/common_rust.jpg
+    - assets/Corn_Model/gray_spot.jpg
+    - assets/Corn_Model/northern_leaf_spot.jpg
+    - assets/Grape_Model/measles.jpg
+    - assets/Grape_Model/grape_blight.JPG
+    - assets/Grape_Model/black_rot.JPG
+    - assets/Apple_Model/apple_black_rot.JPG
+    - assets/Apple_Model/apple_scab.JPG
+    - assets/Apple_Model/cedar_apple_rust.JPG
+    - assets/Tomato_Model/tomato_bacterial_spot.JPG
+    - assets/Tomato_Model/tomato_early_blight.JPG
+    - assets/Tomato_Model/tomato_late_blight.JPG
+    - assets/Tomato_Model/tomato_mosiac_virus.JPG
+    - assets/Tomato_Model/tomato_septoria_leaf.JPG
+    - assets/Tomato_Model/two_spotted_spider.JPG
+    - assets/Tomato_Model/yellow_leaf_curl.JPG
+    - assets/Potato_Model/Potato_model_unquant.tflite
+    - assets/Potato_Model/Potato_labels.txt
+    - assets/Corn_Model/Corn_labels.txt
+    - assets/Corn_Model/Corn_model_unquant.tflite
+    - assets/Tomato_Model/Tomato_labels.txt
+    - assets/Tomato_Model/Tomato_model_unquant.tflite
+    - assets/Apple_Model/Apple_labels.txt
+    - assets/Apple_Model/Apple_model_unquant.tflite
+    - assets/Grape_Model/Grape_labels.txt
+    - assets/Grape_Model/Grape_model_unquant.tflite
+    - assets/Soil_Type/Soil_labels.txt
+    - assets/Soil_Type/Soil_model_unquant.tflite
+    - assets/Soil_Type/Alluvial.JPG
+    - assets/Soil_Type/alluvial2.jpg
+    - assets/Soil_Type/Black.JPG
+    - assets/Soil_Type/Red.JPG
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages

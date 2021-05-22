@@ -1,0 +1,4 @@
+0 Black_Rot
+1 Esca_Black_M...
+2 Healthy
+3 Leaf_Blight

@@ -1,0 +1,443 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
+
+void main()=> runApp(MyApp());
+
+class MyApp extends StatelessWidget
+{
+  @override
+  Widget build(BuildContext context)
+  {
+    return MaterialApp(
+      title:'Krushi Valay',
+      theme: ThemeData(primarySwatch:Colors.orange),
+      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget
+{
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage>
+{
+  @override
+  void initState()
+  {
+    super.initState();
+    Timer(Duration(seconds: 3),
+        ()=>Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context)=>SecondScreen()))
+    );
+  }
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      color: Colors.orange,
+      child:FlutterLogo(size: MediaQuery.of(context).size.height),
+
+    );
+  }
+}
+
+class SecondScreen extends StatefulWidget
+{
+  @override
+  _SecondScreenState createState() => _SecondScreenState();
+}
+class _SecondScreenState extends State<SecondScreen>
+{
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwdController = TextEditingController();
+
+  List items = [
+
+  ];
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(title: Text("Krushi Valay")),
+      body: GridView.count(crossAxisCount: 2,
+        //childAspectRatio: (2 / 1),
+        padding: EdgeInsets.all(10),
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
+
+            children: <Widget> [
+              Card(color: Colors.orangeAccent,
+              child: Container(
+                  child: (
+                    Icon(Icons.bug_report_sharp,size: 114,)
+                    //Container(child: Text("Detect Pest"),alignment: AlignmentDirectional.bottomCenter,)
+
+                  ),
+              ),
+              )
+              ,
+              Card(color: Colors.green,
+                child: Container(
+                    child: Icon(Icons.medical_services,size: 114)
+                ),
+              )
+            ],
+      )
+      );
+
+  }
+}
+
+
+
+
+
+????????????????????????????????????????????????
+GridView.count(
+                      crossAxisCount: 1,
+                      children: [
+
+                        Container(
+                            //decoration: BoxDecoration(
+                            //color: Colors.teal,
+                            //borderRadius: BorderRadius.circular(180.0),
+                            //),
+                          child: GridView.count(
+                            crossAxisCount: 2,
+                            children: [
+
+                            ],
+                          ),
+                        ),
+
+
+
+                      ],
+                    )
+
+***************************************************************************************
+bool _loading=true;  //To check loading of model
+  File _image; //To store loaded image
+  List _output; //To store model results
+  final picker = ImagePicker();
+  int padSize;
+
+  @override
+  void initState()
+  {
+    super.initState();
+    //load Model
+    loadModel().then((value){
+      setState((){});
+    });
+  }
+
+  //*****Function to perform model classification task*******
+  classifyImage(File image)async{
+    var output = await Tflite.runModelOnImage(
+        path: image.path,
+        numResults: 3,
+        threshold: 0.7,
+        imageMean: 127.5,
+        imageStd: 127.5,
+        asynch: true
+    );
+    setState(() {
+      _output=output;
+      _loading=false;
+    });
+    print("prediction: $_output");
+  }
+
+  // Function to load Model
+  loadModel()async{
+    await Tflite.loadModel(model: 'assets/Potato_model_unquant.tflite',
+                            labels: 'assets/Potato_labels.txt');
+  }
+
+  //Function to dipose & clear memory after model concludes result
+  @override
+  void dispose()
+  {
+    super.dispose();
+    Tflite.close();
+  }
+
+  //Function to take image through Camera
+  pickCameraImage()async
+  {
+    var image = await picker.getImage(source: ImageSource.camera);
+    //To check loading error
+    if(image == null)return null;
+    setState(() {
+      _image = File(image.path);
+    });
+    classifyImage(_image);
+  }
+
+  //Function to take Image through Your Gallery
+  pickGalleryImage()async
+  {
+    var image = await picker.getImage(source: ImageSource.gallery);
+    //To check loading error
+    if(image == null)return null;
+    setState(() {
+      _image = File(image.path);
+    });
+    classifyImage(_image);
+  }
+
+
+  ^^^^^^^^^^^^^^^^^
+Previous Material Color : 0xFF21BFBD (closer to teal)
+Changed to :0xFF388E3C (closer to chutney green)
+
+
+
+Column(
+              children:<Widget>[
+                Container(
+                  width:300,
+                  child: TextField(
+                    style: TextStyle(color:Colors.white,fontSize: 25),
+                    decoration: InputDecoration(
+                      hintText: 'Search your city',
+                      hintStyle: TextStyle(color:Colors.white,fontSize: 18.0),
+                      prefixIcon: Icon(Icons.search_off_outlined,color: Colors.white,)
+                    ),
+                  )
+                )
+              ]
+            )
+
+######################################## done for weather ##############################################
+
+Scaffold(
+      backgroundColor: Color(0xFFC2185B),
+      body:ListView(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(top:5.0,left: 10.0),     //+++++++++++++++++++++++++++ Changes for lifting up (top)
+            child:Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.menu),
+                  color: Colors.white,
+                  onPressed: (){
+                    print("Icon pressed");
+                    //Navigator.pop(context);
+                  },
+                ),
+                Container(
+                    width: 125.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        IconButton(
+                          icon:Icon(Icons.filter_list_rounded),
+                          color:Colors.white,
+                          onPressed: (){print("Icon filter Pressed");},
+                        ),
+                        IconButton(
+                            icon:Icon(Icons.translate),
+                            color:Colors.white,
+                            onPressed: (){print("Icon Menu Pressed");}
+                        )
+                      ],
+                    )
+                )
+              ],
+            ),
+          ),
+          SizedBox(height:2.0),                                 //+++++++++++++++++++++++++++ Changes for lifting up (height)
+          Padding(
+              padding: EdgeInsets.only(left:40.0),
+              child: Row(
+                children: [
+                  Text("feedback...",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Cursive',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 45.0
+                      ))
+                ],
+              )
+          ),
+          SizedBox(height: 20.0),
+          Container(
+            height: MediaQuery.of(context).size.height-155,     //+++++++++++++++++++++++++++ Changes for lifting up (155)
+            decoration:BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(130.0)),
+            ),
+            child: ListView(
+
+              padding: EdgeInsets.only(left:20.0,right: 20.0),
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 50.0),
+                  child: Container(
+                      height: MediaQuery.of(context).size.height-240.0, //+++++++++++++++++++++++++++ Changes for lifting up (260 se 240)
+                      child:ListView(
+                        //padding: EdgeInsets.
+                        children: [
+                          //*************************1st container****************************************
+
+
+
+
+                        ],
+                      )
+                  ),
+                )
+              ],
+            ),
+          ),
+
+        ],
+
+      ),
+
+    );
+
+
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/Weather/$weather.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: temperature==null?Center(child:CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),))
+              :Scaffold(
+              appBar: AppBar(
+                actions: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        _getCurrentLocation();
+                      },
+                      child: Container(
+                        child:Icon(Icons.gps_fixed, size: 45.0, color: Colors.white,),),
+                    ),
+                  )
+                ],
+                backgroundColor: Color.fromRGBO(0, 0, 0, 0.5),
+                elevation: 30.0,
+              ),
+              //resizeToAvoidBottomInset: false,
+              backgroundColor: Colors.transparent,
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Center(
+                          child:Image.network('https://www.metaweather.com/static/img/weather/png/'+ abbreviation +'.png',width: 100,),
+                      ),
+                      Center(
+                        child: Text(
+                          temperature.toString() + ' °C',
+                          style: TextStyle(
+                              color: Colors.white, fontSize: 60.0),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          location,
+                          style: TextStyle(
+                              color: Colors.white, fontSize: 40.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        width: 300,
+                        child: TextField(
+                          onSubmitted: (String input) {
+                            onTextFieldSubmitted(input);
+                          },
+                          style:
+                          TextStyle(color: Colors.white, fontSize: 25),
+                          decoration: InputDecoration(
+                            hintText: 'Search another location...',
+                            hintStyle: TextStyle(
+                                color: Colors.white, fontSize: 18.0),
+                            prefixIcon:
+                            Icon(Icons.search, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      Text(errormessage,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.yellowAccent,
+                              fontSize:25))
+
+                    ],
+                  ),
+                ],
+              ),
+            )),
+      );
+
+
+
+
+\\\\\\\\\\\\\\\\\\ WEATHER DUMMY CODE /////////////////////
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:weather/weather.dart';
+import 'package:geolocator/geolocator.dart';
+
+class WeatherScreen2 extends StatefulWidget {
+  @override
+  _WeatherScreen2State createState() => _WeatherScreen2State();
+}
+
+class _WeatherScreen2State extends State<WeatherScreen2> {
+  @override
+  void initState(){
+    getWeather();
+    super.initState();
+  }
+
+  WeatherFactory wf = new WeatherFactory("aef5002fb96136cdd4b39bc9110472b8");
+  Weather mylocation;
+  bool loading = true;
+
+  getWeather() async{
+    //1st request permission
+    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+    Position position = await Geolocator.getCurrentPosition()
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+
+
+
+
+
+
+
